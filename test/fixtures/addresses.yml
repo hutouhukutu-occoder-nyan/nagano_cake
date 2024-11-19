@@ -3,11 +3,11 @@
 one:
   customer_id: 1
   address: MyString
-  post_code: MyString
+  postal_code: MyString
   name: MyString
 
 two:
   customer_id: 1
   address: MyString
-  post_code: MyString
+  postal_code: MyString
   name: MyString
