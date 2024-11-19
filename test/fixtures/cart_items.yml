@@ -2,12 +2,8 @@
 
 one:
   customer_id: 1
-  address: MyString
-  postal_code: MyString
-  name: MyString
+  item_id: 1
 
 two:
   customer_id: 1
-  address: MyString
-  postal_code: MyString
-  name: MyString
+  item_id: 1
