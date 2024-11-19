@@ -13,7 +13,7 @@ class Public::CustomersController < ApplicationController
     redirect_to customer_path(@user)
   end
 
-  def unsbscribe
+  def unsubscribe
     @user = current_user
   end
 
