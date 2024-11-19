@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2024_11_15_095300) do
     t.string "first_name", default: "", null: false
     t.string "last_name_kana", default: "", null: false
     t.string "first_name_kana", default: "", null: false
-    t.string "post_code", default: "", null: false
+    t.string "postal_code", default: "", null: false
     t.string "address", default: "", null: false
     t.string "telephone_number", default: "", null: false
     t.boolean "is_active", default: true, null: false
