@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+  #orders
+  scope module: :public do
+    resources :orders, only: [:new, :create, :index, :show]
+  end
+  post '/orders/check', to: 'public/orders#check', as: :public_orders_check
+  get '/orders/complete', to: 'public/orders#complete', as: :public_orders_complete
+  
   
   #cart_items
   delete '/cart_items/all_destroy', to: 'public/cart_items#all_destroy', as: :cart_items_all_destroy
