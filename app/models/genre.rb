@@ -1,3 +1,3 @@
 class Genre < ApplicationRecord
-  has_many :cart_items
+  has_many :items
 end
