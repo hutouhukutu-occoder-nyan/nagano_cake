@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :items, only: [:index, :show]
-    resources :adresses [:index, :create, :edit, :update, :destroy]
+    resources :adresses, only: [:index, :create, :edit, :update, :destroy]
   end
   post '/orders/check', to: 'public/orders#check', as: :public_orders_check
   get '/orders/complete', to: 'public/orders#complete', as: :public_orders_complete
