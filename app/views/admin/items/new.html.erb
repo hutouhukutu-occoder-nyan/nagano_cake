@@ -1,1 +1,28 @@
-new
+<h1>新規商品登録</h1>
+
+<%= form_with model: @item, url: admin_items_path do |f| %>
+  
+  <%= f.label :商品画像 %>
+  <%= f.file_field :item_image, accept: "image/*" %>
+  </p>
+
+  <%= f.label :商品名 %>
+  <%= f.text_field :name %>
+
+  <%= f.label :商品説明 %>
+  <%= f.text_area :introduction %>
+
+  <%= f.label :ジャンル %>
+  <%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "選択して下さい" %>
+
+  <%= f.label :税抜価格 %>
+  <%= f.text_field :price %>
+
+  <%= f.label :is_active, "販売ステータス" %>
+    <%= f.radio_button :is_active, true %>
+    <%= f.label :is_active, "販売中", value: true %>
+    <%= f.radio_button :is_active, false %>
+    <%= f.label :is_active, "販売停止中", value: false %>
+  <%= f.submit "新規登録" %>
+
+<% end %>
