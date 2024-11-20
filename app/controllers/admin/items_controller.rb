@@ -20,6 +20,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
+    @items = Item.all
   end
 
   def edit
