@@ -4,19 +4,15 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/about', to: 'public/homes#about'
 
-  #orders
+  #orders,cart_items,items
   scope module: :public do
     resources :orders, only: [:new, :create, :index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :items, only: [:index, :show]
   end
   post '/orders/check', to: 'public/orders#check', as: :public_orders_check
   get '/orders/complete', to: 'public/orders#complete', as: :public_orders_complete
-  
-  
-  #cart_items
   delete '/cart_items/all_destroy', to: 'public/cart_items#all_destroy', as: :cart_items_all_destroy
-  scope module: :public do
-    resources :cart_items, only: [:index, :update, :destroy, :create]
-  end 
 
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
