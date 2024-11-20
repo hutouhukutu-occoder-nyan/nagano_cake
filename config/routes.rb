@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
 
   get '/customers/my_page', to: 'public/customers#show', as: 'customer'
