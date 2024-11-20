@@ -47,14 +47,14 @@ ActiveRecord::Schema.define(version: 2024_11_19_045935) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "last_name", default: "", null: false
-    t.string "first_name", default: "", null: false
-    t.string "last_name_kana", default: "", null: false
-    t.string "first_name_kana", default: "", null: false
-    t.string "postal_code", default: "", null: false
-    t.string "address", default: "", null: false
-    t.string "telephone_number", default: "", null: false
-    t.boolean "is_active", default: true, null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_name_kana"
+    t.string "first_name_kana"
+    t.string "post_code"
+    t.string "address"
+    t.string "telephone_number"
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2024_11_19_045935) do
     t.integer "item_id", null: false
     t.integer "price", null: false
     t.integer "amount", null: false
-    t.integer "making_status", default: 0, null: false
+    t.integer "making_status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2024_11_19_045935) do
     t.integer "shipping_cost", null: false
     t.integer "total_payment", null: false
     t.integer "payment_method", null: false
-    t.integer "status", default: 0, null: false
+    t.integer "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

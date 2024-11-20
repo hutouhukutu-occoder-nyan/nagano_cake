@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  # 会員側トップ,アパウトページ
+  root to: 'public/homes#top'
+  get '/about', to: 'public/homes#about'
+
   #orders
   scope module: :public do
     resources :orders, only: [:new, :create, :index, :show]
