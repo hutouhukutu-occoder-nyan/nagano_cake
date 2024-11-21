@@ -5,11 +5,11 @@ class Public::CartItemsController < ApplicationController
   def create
     cart_item = CartItem.new(cart_item_params)
     cart_item.customer_id = current_customer.id
-    cart_item.item_id = cart_item.params[:item_id]
+    cart_item.item_id = cart_item_params[:item_id]
     if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
-      cart_item.amount += params([:cart_item][:amount]).to_i
-      cart_item.update(amount: cart_item.amount)
+      cart_item.amount += params[:cart_item][:amount].to_i
+      cart_item.update(amount:cart_item.amount)
       redirect_to cart_items_path
     else
       cart_item.save
@@ -35,7 +35,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def all_destroy
-    cart_items = current_customer.cart_items.all_destroy
+    cart_items = current_customer.CartItem.all
+    cart_items.destroy
     redirect_to request.referer
   end
 
