@@ -32,6 +32,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+    
   end
 
   def create
