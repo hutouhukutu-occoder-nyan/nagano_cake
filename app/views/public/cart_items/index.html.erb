@@ -3,7 +3,7 @@
     <div class ="col-md-10 justify-content-center">
       <div class = "d-flex justify-content-between mb-3 p-10">
         <h3>ショッピングカート</h3>
-        <%= link_to "カートを空にする",cart_items_all_destroy_path, class:"btn btn-danger" %>
+        <%= link_to "カートを空にする", all_delete_cart_items_path, method: :delete, class:"btn btn-danger" %>
       </div>
 
       <div class="table-responsive">

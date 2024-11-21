@@ -27,6 +27,12 @@ class Public::CartItemsController < ApplicationController
     cart_item.update(cart_item_params)
     redirect_to request.referer
   end
+
+  def all_destroy
+    cart_items = current_customer.cart_items
+    cart_items.all_destroy
+    redirect_to request.referer
+  end
   
   def destroy
     cart_item = CartItem.find(params[:id])
@@ -34,9 +40,9 @@ class Public::CartItemsController < ApplicationController
     redirect_to request.referer
   end
 
-  def all_destroy
-    cart_items = current_customer.CartItem.all
-    cart_items.destroy
+  def destroy_all
+    cart_items = current_customer.cart_items
+    cart_items.destroy_all
     redirect_to request.referer
   end
 
