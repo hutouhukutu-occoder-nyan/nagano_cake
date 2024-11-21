@@ -1,0 +1,15 @@
+<h1>商品一覧</h1>
+<p>(全<%= Item.where(is_active: true).count %>件)</p>
+<p>
+  ※ジャンル検索の場合、「商品一覧」の部分は「(ジャンル名)一覧に変更する<br>
+  <例>「ケーキ一覧」
+</p>
+
+<% @items.each do |item| %>
+  <%= image_tag item.get_item_image, size: '200x200' %><br>
+  <%= item.name %><br>
+  ￥<%= item.price %><br>
+  --------------------------------------------<br>
+<% end %>
+
+<%= paginate @items %>
