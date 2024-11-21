@@ -9,13 +9,16 @@ Rails.application.routes.draw do
   #orders,cart_items,items,adressees
   scope module: :public do
     resources :orders, only: [:new, :create, :index, :show]
-    resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :cart_items, only: [:index, :update, :destroy, :create]do
+      collection do
+        delete 'destroy_all', to: 'cart_items#destroy_all', as: 'all_delete'
+      end
+    end
     resources :items, only: [:index, :show]
     resources :adresses, only: [:index, :create, :edit, :update, :destroy]
   end
-  post '/orders/check', to: 'public/orders#check', as: :public_orders_check
-  get '/orders/complete', to: 'public/orders#complete', as: :public_orders_complete
-  delete '/cart_items/all_destroy', to: 'public/cart_items#all_destroy', as: :cart_items_all_destroy
+  post '/orders/check', to: 'public/orders#check', as: 'public_orders_check'
+  get '/orders/complete', to: 'public/orders#complete', as: 'public_orders_complete'
 
   #customer
   get '/customers/my_page', to: 'public/customers#show', as: 'customer'
