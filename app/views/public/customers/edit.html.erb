@@ -5,7 +5,7 @@
     </div>
   </div>
 
-  <% form_with model:customer, local: true do |f| %>
+  <%= form_with model:@user, url: update_customer_path, local: true do |f| %>
   <div class="row">
     <div class="col-3">
       <%= f.label :名前 %>
