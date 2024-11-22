@@ -41,6 +41,13 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin/homes#index'
 
 
+  get 'searches/index', to: 'public/searches#index', as: 'public_search'
+  
+  namespace :admin do
+    get 'searches/index'
+  end
+
+
 #device
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
