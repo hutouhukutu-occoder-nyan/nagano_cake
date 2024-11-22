@@ -1,15 +1,23 @@
 <header>
   <div class="container">
-    <div class="row">
-      <div class="col">
-       ロゴ表記
+    <div class="row aline-items-center">
+      <div class="col-3">
+        <h1 class="logo">
+          長野Cake
+        </h1>
       </div>
     </div>
 
     # ログインしている状態とpublicログイン状態とadminログイン状態で表示を変える
-    <div class="col">
-      <div class="row">
-        ナビを使ったリンク表示
+    <div class="col-9">
+      <div class="row justify-content-end">
+        <nav class="col-12">
+          <ul class="nav justify-content-end">
+            <% if admin_signed_in? %>
+              <%= link_to 
+          
+          </ul>
+        </nav>
       </div>
       <div class="row">
         検索窓
