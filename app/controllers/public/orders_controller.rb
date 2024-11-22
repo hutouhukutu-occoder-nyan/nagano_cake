@@ -3,6 +3,7 @@ class Public::OrdersController < ApplicationController
   # before_action :new_order_check
 
   def new
+    @addresses = current_customer.addresses || []
   end
 
   def check
@@ -35,6 +36,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+    @order = Order.new
+    @order.customer_id = current_customer.id
+    
+
     
   end
 
