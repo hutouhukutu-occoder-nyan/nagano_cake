@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2><%= full_name(@user) %>さんの会員情報編集</h2>
+    </div>
+  </div>
+
+  <%= form_with model:@user, url: admin_customer_path, local: true do |f| %>
+  <div class="row">
+    <div class="col-3">
+      <div>会員ID</div>
+    </div>
+    <div class="col-3">
+      <div><%= @user.id %></div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-3">
+      <%= f.label :名前 %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :first_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <%= f.label :フリガナ %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :last_name_kana, class: 'form-control' %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :first_name_kana, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <%= f.label :郵便番号 %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :postal_code, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <%= f.label :住所 %>
+    </div>
+    <div class="col-6">
+      <%= f.text_field :address, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <%= f.label :電話番号 %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :telephone_number, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <%= f.label :メールアドレス %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <%= f.label :会員ステータス %>
+    </div>
+    <div class="col-3">
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, "有効", value: true %>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, "退会", value: false %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3 offset-3">
+      <%= f.submit :変更を保存, class: 'btn btn-success' %>
+    </div>
+  </div>
+
+  <% end %>
+  
+</div>
