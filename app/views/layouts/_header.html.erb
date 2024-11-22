@@ -34,21 +34,21 @@
             <% if admin_signed_in? %>
               <%= form_with url: admin_searches_path, method: :get, local: true, class: 'input-group' do %>
                 <%= text_field_tag :query, @query, class: 'form-control', placeholder: '商品名で検索' %>
-                <%= button_tag type: 'submit', class: 'btn btn-outline-secondary' do %>
+                <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
                   <i class="bi bi-search"></i>
                 <% end %>
               <% end %>
             <% elsif customer_signed_in? %>
               <%= form_with url: public_search_path, method: :get, local: true, class: 'input-group' do %>
                 <%= text_field_tag :query, @query, class: 'form-control', placeholder: '商品名で検索' %>
-                <%= button_tag type: 'submit', class: 'btn btn-outline-secondary' do %>
+                <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
                   <i class="bi bi-search"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= form_with url: public_search_path, method: :get, local: true, class: 'input-group' do %>
                 <%= text_field_tag :query, @query, class: 'form-control', placeholder: '商品名で検索' %>
-                <%= button_tag type: 'submit', class: 'btn btn-outline-secondary' do %>
+                <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
                   <i class="bi bi-search"></i>
                 <% end %>
               <% end %>

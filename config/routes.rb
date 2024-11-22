@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
+    resources :searches, only: [:index]
   end
 
   get '/admin', to: 'admin/homes#index'
@@ -43,9 +44,7 @@ Rails.application.routes.draw do
 
   get 'searches/index', to: 'public/searches#index', as: 'public_search'
   
-  namespace :admin do
-    get 'searches/index'
-  end
+
 
 
 #device
