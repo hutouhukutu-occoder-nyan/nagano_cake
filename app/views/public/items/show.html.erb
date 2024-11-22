@@ -1,1 +1,8 @@
 show
+
+
+<%= form_with model: @cart_item_new,url: cart_items_path, method: :post, local:true do |f| %>
+  <%= f.hidden_field :item_id, value: @item.id %>
+  <%= f.number_field :amount, min: 1, placeholder: '個数選択',class: "form-control form-control-sm" %>
+  <%= f.submit "カートに入れる",class: "btn btn-success" %>
+<% end %>
