@@ -1,5 +1,10 @@
 <div class='container'>
   <div class='row'>
+    <div class='col'>
+      <h2><%= full_name(@user) %>さんの会員情報</h2>
+    </div>
+  </div>
+  <div class='row'>
     <div class='col-8'>
       <div class="table-responsive mx-auto w-50">
         <table class="table table-borderless">
@@ -40,8 +45,8 @@
         </table>
       </div>
       <div class="mt-4">
-        <%= link_to "編集する", edit_admin_customer_path(@user), class: "btn btn-primary me-2" %>
-        <%= link_to "注文履歴一覧を見る", withdraw_customer_path, class: "btn btn-danger" %>
+        <%= link_to "編集する", edit_admin_customer_path(@user), class: "btn btn-success me-2" %>
+        <%= link_to "注文履歴一覧を見る", "/admin", class: "btn btn-primary" %>
      </div>
     </div>
   </div>
