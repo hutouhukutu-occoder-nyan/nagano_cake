@@ -1,8 +1,22 @@
-show
+<div class="container">
+  <div class="row my-3">
+    <div class="col-3">
+      <%= render 'search_genre', genres: @genres %>
+    </div>
 
+    <div class="col-4">
+      <%= image_tag @item.get_item_image, class: "img-fluid" %>
+    </div>
 
-<%= form_with model: @cart_item_new,url: cart_items_path, method: :post, local:true do |f| %>
-  <%= f.hidden_field :item_id, value: @item.id %>
-  <%= f.number_field :amount, min: 1, placeholder: '個数選択',class: "form-control form-control-sm" %>
-  <%= f.submit "カートに入れる",class: "btn btn-success" %>
-<% end %>
+    <div class="col-4">
+      <p class="fs-1"><%= @item.name %></p>
+      <p><%= @item.introduction %></p>
+      <p>￥<%= @item.with_tax_price %>(税込)</p>
+      <%= form_with model: @cart_item_new,url: cart_items_path, method: :post, local:true do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.number_field :amount, min: 1, placeholder: '個数選択',class: "form-control form-control-sm" %>
+        <%= f.submit "カートに入れる",class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
