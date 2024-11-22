@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
 
-  # before_action :new_order_check
+  before_action :new_order_check
 
   def new
     @addresses = current_customer.addresses || []
@@ -35,6 +35,13 @@ class Public::OrdersController < ApplicationController
     end
   end
 
+  def create
+    @cart_items =CartItem.where(customer_id:[current_customer.id])
+    @order = Order.new(order_params)
+    @postage = 800
+    
+  end
+
   def complete
   end
 
@@ -49,12 +56,16 @@ class Public::OrdersController < ApplicationController
   def show
   end
 
-  #private
+  private
 
-  #def new_order_check
-    #if current_customer.cart_items.empty?
-      #redirect_to root_path, alert: "カートが空です。商品を追加してください。"
-    #end
-  #end
+  def order_params
+    params.require(:order).permit(:customer_id, :postal_code, :address, :total_payment,:name,:payment_method, :shipping_cost, :status, :postage, :payment)
+  end
+
+  def new_order_check
+    if current_customer.cart_items.empty?
+      redirect_to root_path, alert: "カートが空です。商品を追加してください。"
+    end
+  end
 
 end

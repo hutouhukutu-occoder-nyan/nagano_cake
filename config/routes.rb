@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :orders, only: [:new, :create, :index, :show]do
       collection do
-        post 'check', to: 'orders#check', as: 'check'
+        post 'check', to: 'orders#check'
         get 'complete', to: 'orders#complete', as: 'complete'
       end
     end
