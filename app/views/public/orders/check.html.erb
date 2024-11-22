@@ -1,12 +1,63 @@
-<div class ="col-md-11">
-  <h3>注文情報確認</h3>
 
-  <table class ="table">
-    <tr>
-      <th>商品名</th>
-      <th>単価</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </table>
-</div>
+  <div class="container">
+    <h3>注文情報確認</h3>
+    <div class="row my-3">
+      <div class="col-9">
+        <table class="table table-bordered">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= image_tag cart_item.item.item_image, class: "img-fluid", style: "width: 50px; height: auto;" %>
+                <%= cart_item.item.name %>
+              </td>
+              <td><%= cart_item.item.with_tax_price %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= cart_item.subtotal %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+
+      <div class="col-3">
+        <table class="table table-bordered">
+          <tr>
+            <th>送料</th>
+            <td><%= @shipping_cost %></td>
+          </tr>
+          <tr>
+            <th>商品小計</th>
+            <td><%= @total_cart_price %></td>
+          </tr>
+          <tr>
+            <th>請求金額</th>
+            <td><%= @total_payment %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <div class="col-md-9">
+        <table class="table table-borderless">
+          <tr>
+            <th style="width: 150px">支払方法</th>
+            <td><%= @payment_method %></td>
+          </tr>
+          <tr>
+            <th style="width: 150px">お届け先</th>
+            <td><%= @selected_address %><br><%= @selected_name %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="row my-3 justify-content-center">
+      <%= link_to "注文を確定する", orders_path, method: :post, class: "btn btn-success" %>
+    </div>
+  </div>
