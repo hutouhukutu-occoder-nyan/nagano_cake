@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
   end
 
+  get '/admin', to: 'admin/homes#index'
+
 
 #device
 
