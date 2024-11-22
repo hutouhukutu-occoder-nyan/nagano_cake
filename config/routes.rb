@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
 
+  get '/orders/check',to: 'public/orders#check', as: 'check'
+
   #customer
   get '/customers/my_page', to: 'public/customers#show', as: 'customer'
   get '/customers/information/edit', to: 'public/customers#edit', as: 'edit_customer'
