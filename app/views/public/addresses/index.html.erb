@@ -42,8 +42,8 @@
 
 <div class="row my-5">
   <table class="table table-bordered">
-    <thead>
-      <tr>
+    <thead class="bg-light">
+      <tr class="text-center">
         <th>郵便番号</th>
         <th>住所</th>
         <th>氏名</th>
@@ -52,13 +52,13 @@
     </thead>
     <tbody>
       <% @addresses.each do |address| %>
-        <tr>
+        <tr class="text-center">
           <td><%= address.postal_code %></td>
           <td><%= address.address %></td>
           <td><%= address.name %></td>
           <td>
-            <%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
-            <%= link_to "削除する", address_path(address), method: :delete, class: "btn btn-danger" %>
+            <%= link_to "編集する", edit_address_path(address), class: "btn btn-success mx-2" %>
+            <%= link_to "削除する", address_path(address), method: :delete, class: "btn btn-danger mx-2" %>
           </td>
         </tr>
       <% end %>
