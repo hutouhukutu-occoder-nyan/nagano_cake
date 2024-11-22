@@ -51,11 +51,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @addresses.each do |address| %>
+      <% @addresses.each do |registered_address| %>
         <tr class="text-center">
-          <td><%= address.postal_code %></td>
-          <td><%= address.address %></td>
-          <td><%= address.name %></td>
+          <td><%= registered_address.postal_code %></td>
+          <td><%= registered_address.address %></td>
+          <td><%= registered_address.name %></td>
           <td>
             <%= link_to "編集する", edit_address_path(address), class: "btn btn-success mx-2" %>
             <%= link_to "削除する", address_path(address), method: :delete, class: "btn btn-danger mx-2" %>
