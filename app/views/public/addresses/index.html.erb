@@ -1,14 +1,14 @@
 <div class="container">
   
-  <div class="row">
+  <div class="row my-3">
     <%= render 'layouts/errors', obj: @address %>
   </div>
 
-  <div class="row">
+  <div class="row my-3">
     <h1>配送先登録/一覧</h1>
   </div>
 
-  <div class="row">
+  <div class="row my-3">
     <%= form_with model: @address, url: addresses_path, class: "mx-auto" do |f| %>
 
       <div class="form-group row my-3">
@@ -40,8 +40,8 @@
     <% end %>
   </div>
 
-<div class="row">
-  <div class="table">
+<div class="row my-5">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>郵便番号</th>
@@ -51,7 +51,7 @@
       </tr>
     </thead>
     <tbody>
-      <%= @addresses.each do |address| %>
+      <% @addresses.each do |address| %>
         <tr>
           <td><%= address.postal_code %></td>
           <td><%= address.address %></td>
@@ -63,5 +63,5 @@
         </tr>
       <% end %>
     </tbody>
-  </div>
+  </table>
 </div>
