@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       end
     end
     resources :items, only: [:index, :show]
-    resources :adresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
   post '/orders/check', to: 'public/orders#check', as: 'public_orders_check'
   get '/orders/complete', to: 'public/orders#complete', as: 'public_orders_complete'
