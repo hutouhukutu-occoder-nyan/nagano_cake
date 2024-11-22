@@ -1,4 +1,7 @@
 class Public::OrdersController < ApplicationController
+
+  # before_action :new_order_check
+
   def new
   end
 
@@ -43,4 +46,13 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
+
+  #private
+
+  #def new_order_check
+    #if current_customer.cart_items.empty?
+      #redirect_to root_path, alert: "カートが空です。商品を追加してください。"
+    #end
+  #end
+
 end
