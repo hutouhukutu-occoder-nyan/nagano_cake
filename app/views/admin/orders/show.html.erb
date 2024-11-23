@@ -1,2 +1,80 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class ="container mt-4">
+  <div class ="row">
+    <h2 class ="ml-5" >注文履歴詳細</h2>
+    <div class ="col-md-12">
+      <table class ="table table-bordered mt-3">
+        <tr>
+          <th class="active bg-light">購入者</th>
+          <td><%= full_name(@order.customer) %></td>
+        </tr>
+        <tr>
+          <th class="active bg-light">注文日</th>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th class="active bg-light">配送先</th>
+          <td>〒<%= @order.postal_code %> <%= @order.address %>
+              <br><%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th class="active bg-light">支払方法</th>
+          <td><%= @order.payment_method %></td>
+        </tr>
+        <tr>
+          <th class="active bg-light">注文ステータス</th>
+          <td>
+            <%= form_with model:@order, url: admin_order_path(@order), method: :patch do |f| %>
+              <%= f.select :status,  Order.statuses.keys.map { |key| [key, key] }, { selected: @order.status }, class: "form-control"%>
+              <%= f.submit '更新' %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class ="row">
+    <div class="col-md-9">
+      <table class="table table-bordered mt-3">
+        <thead class="active bg-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do|order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.amount * order_detail.price %></td>
+            <td>
+              <%= form_with model:order_detail, url: admin_order_detail_path, method: :patch do |f| %>
+                <%= f.select :making_status,  OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: order_detail.making_status }, class: "form-control"%>
+              <%= f.submit '更新' %>
+            <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+     </div>
+     <div class="col-md-3">
+      <table class="table table-bordered mt-3">
+        <tr>
+          <th class="active bg-light">商品合計</th><td><%= @order.total_payment - @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <th class="active bg-light">送料</th><td><%= @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <th class="active bg-light">請求金額合計</th><td><%= @order.total_payment %></td>
+        </tr>
+      </table>
+     </div>
+  </div>
+</div>
