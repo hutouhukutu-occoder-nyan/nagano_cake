@@ -13,13 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
- /* ページネーションのアイテム間にスペースを追加 */
-.pagination .page-item {
-  margin-right: 10px;  /* アイテム間にスペースを追加 */
-}
-
-/* ページネーションリンクに文字間を調整 */
-.pagination .page-link {
-  letter-spacing: 1px;  /* 文字間を広げる */
-}

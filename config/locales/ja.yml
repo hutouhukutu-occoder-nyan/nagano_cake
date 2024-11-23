@@ -13,9 +13,6 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
   views:
     pagination:
-      first: "first"
-      previous: "previous"
-      truncate: "..."
       last: "Last>"
       next: "Next>"
   date:
