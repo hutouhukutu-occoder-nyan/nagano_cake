@@ -29,8 +29,8 @@
             </ul>
           </nav>
         </div>
-        <div class="row">
-          <div class="col-12">
+        <div class="row justify-content-end">
+          <div class="col-6 mb-3">
             <% if admin_signed_in? %>
               <%= form_with url: admin_searches_path, method: :get, local: true, class: 'input-group' do %>
                 <%= text_field_tag :query, @query, class: 'form-control', placeholder: '商品名で検索' %>
