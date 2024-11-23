@@ -1,26 +1,60 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="row m-4">
+    <h2 class="bg-light">ログイン</h2>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="row">
+    <div class="col offset-1 mx-6 mb-3">
+      <span class="bg-light">会員の方はこちらからログイン</span>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
 
-<%= render "public/shared/links" %>
+  <div class="row justify-content-center">
+    <div class="col-8">
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="row mb-3">
+          <div class="col-3">
+            <%= f.label :email %>
+          </div>
+          <div class="col-9">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <%= f.label :password %>
+          </div>
+          <div class="col-9">
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          </div>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div class="actions text-center mt-3">
+          <%= f.submit "ログイン", class: "btn btn-primary w-25" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row my-4">
+    <div class="col offset-1 mx-6">
+      <span class="bg-light">会員登録がお済みでない方</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-center">
+      <div><%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください</div>
+    </div>
+  </div>
+</div>
+

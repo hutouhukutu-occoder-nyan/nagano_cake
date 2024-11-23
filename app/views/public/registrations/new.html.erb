@@ -1,5 +1,9 @@
 <div class="container">
-  <h2>新規会員登録</h2>
+  <div class="row">
+    <div class="col offset-1 m-4">
+      <h2>新規会員登録</h2>
+    </div>
+  </div>
   <form action="<%= customer_registration_path %>" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
@@ -8,13 +12,13 @@
       <div class="col-3">
         <div class="input-group">
           <span class="input-group-text">(姓)</span>
-          <input type="text" id="last_name" name="customer[last_name]" class="form-control" required>
+          <input type="text" id="last_name" name="customer[last_name]" class="form-control" required placeholder="令和">
         </div>
       </div>
       <div class="col-3">
         <div class="input-group">
           <span class="input-group-text">(名)</span>
-          <input type="text" id="first_name" name="customer[first_name]" class="form-control" required>
+          <input type="text" id="first_name" name="customer[first_name]" class="form-control" required placeholder="道子">
         </div>
       </div>
     </div>
@@ -24,48 +28,92 @@
       <div class="col-3">
         <div class="input-group">
           <span class="input-group-text">(セイ)</span>
-          <input type="text" id="last_name_kana" name="customer[last_name_kana]" class="form-control" required>
+          <input type="text" id="last_name_kana" name="customer[last_name_kana]" class="form-control" required placeholder="レイワ">
         </div>
       </div>
       <div class="col-3">
         <div class="input-group">
           <span class="input-group-text">(メイ)</span>
-          <input type="text" id="first_name_kana" name="customer[first_name_kana]" class="form-control" required>
+          <input type="text" id="first_name_kana" name="customer[first_name_kana]" class="form-control" required placeholder="ミチコ">
         </div>
       </div>
     </div>
     
     <div class="form-group mb-3">
-      <label for="email">メールアドレス</label>
-      <input type="email" id="email" name="customer[email]" class="form-control" required>
+      <div class="row">
+        <div class="col-3">
+          <label for="email">メールアドレス</label>
+        </div>
+        <div class="col-3">
+          <input type="email" id="email" name="customer[email]" class="form-control" required placeholder="sample@example.com">
+        </div>
+      </div>
     </div>
 
     <div class="form-group mb-3">
-      <label for="postal_code">郵便番号（ハイフンなし）</label>
-      <input type="text" id="postal_code" name="customer[postal_code]" class="form-control" required>
+      <div class="row">
+        <div class="col-3">
+          <label for="postal_code">郵便番号（ハイフンなし）</label>
+        </div>
+        <div class="col-3">
+          <input type="text" id="postal_code" name="customer[postal_code]" class="form-control" required placeholder="0000000">
+        </div>
+      </div>
     </div>
 
     <div class="form-group mb-3">
-      <label for="address">住所</label>
-      <input type="text" id="address" name="customer[address]" class="form-control" required>
+      <div class="row">
+        <div class="col-3">
+          <label for="address">住所</label>
+        </div>
+        <div class="col-6">
+          <input type="text" id="address" name="customer[address]" class="form-control" required placeholder="東京都渋谷区代々木神園町0-0">
+        </div>
+      </div>
     </div>
 
     <div class="form-group mb-3">
-      <label for="telephone_number">電話番号（ハイフンなし）</label>
-      <input type="tel" id="telephone_number" name="customer[telephone_number]" class="form-control" required>
+      <div class="row">
+        <div class="col-3">
+          <label for="telephone_number">電話番号（ハイフンなし）</label>
+        </div>
+        <div class="col-3">
+          <input type="tel" id="telephone_number" name="customer[telephone_number]" class="form-control" required placeholder="00000000000">
+        </div>
     </div>
 
-    <div class="row align-items-center mb-3">
-      <div class="col-6">
+    <div class="row my-3">
+      <div class="col-3">
         <label for="password">パスワード（6文字以上）</label>
+      </div>
+      <div class="col-3">
         <input type="password" id="password" name="customer[password]" class="form-control" required>
       </div>
-      <div class="col-6">
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
         <label for="password_confirmation">パスワード（確認用）</label>
+      </div>
+      <div class="col-3">
         <input type="password" id="password_confirmation" name="customer[password_confirmation]" class="form-control" required>
       </div>
     </div>
 
-    <button type="submit" class="btn btn-success mt-3">新規登録</button>
+    <div class="row">
+      <div class="col-3 offset-3">
+        <button type="submit" class="btn btn-success mt-3 w-100">新規登録</button>
+      </div>
+    </div>
   </form>
+
+  <div class="row m-4">
+    <div class="col offset-1">
+      <h2>既に登録済みの方</h2>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col offset-2">
+      <%= link_to "こちら", new_customer_session_path %> からからログインしてください。
+    </div>
+  </div>
 </div>
