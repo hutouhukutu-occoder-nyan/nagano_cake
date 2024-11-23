@@ -4,6 +4,30 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
+  def create
+    # サインアップに使用した全カラムで検索
+    @user = Customer.find_by(
+      email: params[:customer][:email],
+      last_name: params[:customer][:last_name],
+      first_name: params[:customer][:first_name],
+      last_name_kana: params[:customer][:last_name_kana],
+      first_name_kana: params[:customer][:first_name_kana],
+      postal_code: params[:customer][:postal_code],
+      address: params[:customer][:address],
+      telephone_number: params[:customer][:telephone_number]
+    )
+  
+    # 退会済みユーザーの再アクティブ化処理
+    if @user&.is_active == false
+      @user.update(is_active: true) # Reactivateメソッドがない場合、直接更新
+      flash[:notice] = '再入会が完了しました'
+      redirect_to root_path and return # 必要なリダイレクト先を指定
+    end
+  
+    # 通常のDeviseサインアップ処理
+    super
+  end
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -67,4 +91,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number, :is_active])
   end
+
+
 end
