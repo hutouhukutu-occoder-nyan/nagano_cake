@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
 
-  before_action :new_order_check, except: [:complete]
+  before_action :new_order_check, except: [:complete,:index,:show]
 
   def new
     @addresses = current_customer.addresses || []
@@ -68,6 +68,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
