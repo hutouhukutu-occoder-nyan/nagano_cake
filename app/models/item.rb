@@ -1,7 +1,5 @@
 class Item < ApplicationRecord
 
-  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 1 }
-
   has_many :cart_items
   has_many :order_details
 

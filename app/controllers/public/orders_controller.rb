@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
 
-  before_action :new_order_check
+  before_action :new_order_check, except: [:complete]
 
   def new
     @addresses = current_customer.addresses || []
@@ -15,19 +15,22 @@ class Public::OrdersController < ApplicationController
     @address = params[:order][:address]
     case @address
     when "customer_address"
-      @selected_address = "〒" + current_customer.postal_code + " " + current_customer.address
+      @selected_postal_code =current_customer.postal_code
+      @selected_address = current_customer.address
       @selected_name = current_customer.last_name + current_customer.first_name
-    when "registred_address"
-      unless params[:order][:address_id] == " "
-        selected = Adress.find(params[:order][:address_id])
-        @selected_address = "〒" +selected.postal_code + " " + selected.address
-        @selected_name = selected.name
+    when "registered_address"
+      if params[:order][:address_id].present?
+        address = Address.find(params[:order][:address_id])
+        @selected_postal_code = address.postal_code
+        @selected_address = address.address
+        @selected_name = address.name
       else
         render :new
       end
     when "new_address"
       unless params[:order][:new_postal_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
-        @selected_address = "〒" + params[:order][:new_postal_code] + "" + params[:order][:new_address]
+        @selected_postal_code = params[:order][:new_postal_code]
+        @selected_address = params[:order][:new_address]
         @selected_name = params[:order][:new_name]
       else
         render :new
@@ -35,19 +38,33 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def create
-    @cart_items =CartItem.where(customer_id:[current_customer.id])
-    @order = Order.new(order_params)
-    @postage = 800
     
+
+  def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.shipping_cost = 800
+    @order.total_payment = current_customer.total_cart_price + @order.shipping_cost
+  
+    if @order.save
+      current_customer.cart_items.each do |cart_item|
+        OrderDetail.create!(
+          order_id: @order.id,
+          item_id: cart_item.item_id,
+          price: cart_item.item.with_tax_price,
+          amount: cart_item.amount,
+        )
+      end
+  
+      current_customer.cart_items.destroy_all
+      redirect_to complete_orders_path, notice: "注文が確定しました。"
+    else
+      flash.now[:alert] = "注文内容にエラーがあります。再度確認してください。"
+      rederect_to new_order_path
+    end
   end
 
   def complete
-  end
-
-    
-
-  def create
   end
 
   def index
