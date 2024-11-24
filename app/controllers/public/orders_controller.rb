@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
   before_action :new_order_check, except: [:complete,:index,:show]
 
   def new
-    @addresses = current_customer.addresses || []
+    @addresses = current_customer.addresses.to_a
   end
 
   def check
