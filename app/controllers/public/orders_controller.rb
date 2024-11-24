@@ -60,8 +60,7 @@ class Public::OrdersController < ApplicationController
       current_customer.cart_items.destroy_all
       redirect_to complete_orders_path, notice: "注文が確定しました。"
     else
-      flash.now[:alert] = "注文内容にエラーがあります。再度確認してください。"
-      rederect_to new_order_path
+      rederect_to new_order_path,alert: "注文内容にエラーがあります。再度確認してください。"
     end
   end
 
@@ -73,7 +72,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = current_customer.orders.find(params[:id])
   end
 
   private
