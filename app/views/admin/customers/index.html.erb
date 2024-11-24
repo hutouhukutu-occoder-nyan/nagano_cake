@@ -21,7 +21,9 @@
             <%= link_to full_name(user), admin_customer_path(user) %>
           </td>
           <td><%= user.email %></td>
-          <td><%= customer_status(user) %></td>
+          <td class="<%= user.is_active ? 'text-success' : 'text-muted' %>">
+            <%= customer_status(user) %>
+          </td>
         </tr>
       <% end %>
       <%= paginate @users %>
