@@ -11,7 +11,7 @@ class Admin::OrdersController < ApplicationController
     if @order.update(order_params)
       redirect_to admin_order_path(@order) ,notice: '注文ステータスが更新されました。'
     else
-      redirect_to admin_order_path(@order)  ,alert: '注文ステータスの更新に失敗しました。'
+      redirect_to admin_order_path(@order) ,alert: '注文ステータスの更新に失敗しました。'
     end
   end
 

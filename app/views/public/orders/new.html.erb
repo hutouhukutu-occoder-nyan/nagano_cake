@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-12">
       <h4 class ="my-2">支払方法</h4>
-      <div class="offset-md-1">
+      <div class="offset-1">
         <%= f.radio_button :payment_method, :credit_card, checked: true %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
         <br>
@@ -17,7 +17,7 @@
 
     <div class="col-md-12">
       <h4 class ="my-2">お届け先</h4>
-      <div  class="offset-md-1 my-2">
+      <div  class="offset-1 my-2">
         <%= f.radio_button :address, "customer_address", checked: true %>
         <%= f.label :address, "ご自身の住所" %>
         〒<%= current_customer.postal_code %> <%= current_customer.address %> <%= full_name(current_customer) %>

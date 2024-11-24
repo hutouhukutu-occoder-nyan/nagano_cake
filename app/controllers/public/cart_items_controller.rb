@@ -6,8 +6,8 @@ class Public::CartItemsController < ApplicationController
     cart_item = CartItem.new(cart_item_params)
     cart_item.customer_id = current_customer.id
     cart_item.item_id = cart_item_params[:item_id]
-    if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
-      cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+    if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
+      cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
       cart_item.update(amount:cart_item.amount)
       redirect_to cart_items_path
