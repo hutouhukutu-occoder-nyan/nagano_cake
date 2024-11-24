@@ -21,9 +21,9 @@
             </td>
             <td><%= full_name(order.customer) %></td>
             <td>
-              <% order.order_details.each do |order_detail| %>
-              <%= number_with_delimiter(order_detail.amount) %>
-              <% end %>
+              <%# order.order_details.each do |order_detail| %>
+              <%= number_with_delimiter(order.order_details.sum(&:amount)) %>
+              <%# end %>
             </td>
             <td><%= order.status %></td>
           </tr>
