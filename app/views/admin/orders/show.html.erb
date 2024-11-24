@@ -5,7 +5,11 @@
       <table class ="table table-bordered mt-3">
         <tr>
           <th class="active bg-light">購入者</th>
-          <td><%= full_name(@order.customer) %></td>
+          <td>
+            <%= link_to admin_customer_path(@order.customer), class:"text-dark", style: "text-decoration: underline;" do %>
+              <%= full_name(@order.customer) %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th class="active bg-light">注文日</th>
@@ -19,14 +23,14 @@
         </tr>
         <tr>
           <th class="active bg-light">支払方法</th>
-          <td><%= @order.payment_method %></td>
+          <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
         </tr>
         <tr>
           <th class="active bg-light">注文ステータス</th>
           <td>
-            <%= form_with model:@order, url: admin_order_path(@order), method: :patch do |f| %>
-              <%= f.select :status,  Order.statuses.keys.map { |key| [key, key] }, { selected: @order.status }, class: "form-control"%>
-              <%= f.submit '更新' %>
+            <%= form_with model:@order, url: admin_order_path(@order), method: :patch, class: "d-flex align-items-center" do |f| %>
+              <%= f.select :status,  Order.statuses.keys.map { |key| [key, key] }, { selected: @order.status }, class: "form-control form-control-sm me-2 w-auto" %>
+              <%= f.submit '更新', class:"ml-3 btn btn-success" %>
             <% end %>
           </td>
         </tr>
@@ -49,13 +53,13 @@
           <% @order.order_details.each do|order_detail| %>
           <tr>
             <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.price %></td>
-            <td><%= order_detail.amount %></td>
-            <td><%= order_detail.amount * order_detail.price %></td>
+            <td><%= number_with_delimiter(order_detail.price) %></td>
+            <td><%= number_with_delimiter(order_detail.amount) %></td>
+            <td><%= number_with_delimiter(order_detail.amount * order_detail.price) %></td>
             <td>
-              <%= form_with model:order_detail, url: admin_order_detail_path, method: :patch do |f| %>
-                <%= f.select :making_status,  OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: order_detail.making_status }, class: "form-control"%>
-              <%= f.submit '更新' %>
+              <%= form_with model:order_detail, url: admin_order_detail_path, method: :patch, class: "d-flex align-items-center" do |f| %>
+                <%= f.select :making_status,  OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: order_detail.making_status }, class: "form-control form-control-sm me-2 w-auto"%>
+              <%= f.submit '更新' ,class:"ml-3 btn btn-success" %>
             <% end %>
             </td>
           </tr>
@@ -63,16 +67,16 @@
         </tbody>
       </table>
      </div>
-     <div class="col-md-3">
+     <div class="col-md-3 d-flex flex-column justify-content-end">
       <table class="table table-bordered mt-3">
         <tr>
-          <th class="active bg-light">商品合計</th><td><%= @order.total_payment - @order.shipping_cost %></td>
+          <th class="active bg-light">商品合計</th><td class="text-right"><%= number_with_delimiter(@order.total_payment - @order.shipping_cost) %>円</td>
         </tr>
         <tr>
-          <th class="active bg-light">送料</th><td><%= @order.shipping_cost %></td>
+          <th class="active bg-light">送料</th><td class="text-right"><%= number_with_delimiter(@order.shipping_cost) %>円</td>
         </tr>
         <tr>
-          <th class="active bg-light">請求金額合計</th><td><%= @order.total_payment %></td>
+          <th class="active bg-light">請求金額合計</th><td class="text-right"><%= number_with_delimiter(@order.total_payment) %>円</td>
         </tr>
       </table>
      </div>
