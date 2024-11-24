@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row">
+  <div class="row m-4">
     <div class="col">
       <h2><%= full_name(@user) %>さんの会員情報編集</h2>
     </div>
   </div>
 
   <%= form_with model:@user, url: admin_customer_path, local: true do |f| %>
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <div>会員ID</div>
     </div>
@@ -15,7 +15,7 @@
     </div>
   </div>
   
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :名前 %>
     </div>
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :フリガナ %>
     </div>
@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :郵便番号 %>
     </div>
@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :住所 %>
     </div>
@@ -57,7 +57,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :電話番号 %>
     </div>
@@ -66,7 +66,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :メールアドレス %>
     </div>
@@ -75,7 +75,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :会員ステータス %>
     </div>
@@ -89,7 +89,7 @@
 
   <div class="row">
     <div class="col-3 offset-3">
-      <%= f.submit :変更を保存, class: 'btn btn-success' %>
+      <%= f.submit :変更を保存, class: 'btn btn-success w-100' %>
     </div>
   </div>
 
