@@ -1,1 +1,36 @@
-index
+<div class ="container mt-4">
+  <div class ="row">
+    <h2 class ="ml-5" >注文履歴一覧</h2>
+    <div class ="col-md-12">
+      <table class ="table mt-3">
+        <thead class="thead-light">
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <%= link_to admin_order_path(order), class:"text-dark", style: "text-decoration: underline;" do%>
+               <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+              <% end %>
+            </td>
+            <td><%= full_name(order.customer) %></td>
+            <td>
+              <%= number_with_delimiter(order.order_details.sum(&:amount)) %>
+            </td>
+            <td><%= order.status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="d-flex text-center my-4 justify-content-center" >
+        <%= paginate @orders, class: 'pagination' %>
+      </div>
+    </div>
+  </div>
+</div>

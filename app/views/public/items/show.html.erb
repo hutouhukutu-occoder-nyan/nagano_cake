@@ -13,7 +13,8 @@
       <p class=" my-3"><%= @item.introduction %></p>
       <p class="h5 my-3">￥<%= @item.with_tax_price %>(税込)</p>
       
-      <%= form_with model: @cart_item_new, url: cart_items_path, method: :post, local:true do |f| %>
+      <% if customer_signed_in? %>
+        <%= form_with model: @cart_item_new, url: cart_items_path, method: :post, local:true do |f| %>
         <div class="row my-3">
           <%= f.hidden_field :item_id, value: @item.id %>
           <div class="col-auto my-2">
@@ -23,6 +24,8 @@
             <%= f.submit "カートに入れる", class: "btn btn-success btn-sm" %>
           </div>
         </div>
+        <% end %>
+      <% else %>
       <% end %>
     </div>
   </div>
