@@ -1,16 +1,23 @@
-<div class="container text-center">
-  <div>
-    <h1>本当に退会しますか？</h1>
-  </div>
-  <div>
-    <p>
-      退会すると、会員登録情報や<br>
-      これまでの購入履歴が閲覧できなくなります。<br>
-      退会する場合は、「退会する」をクリックしてください。
-    </p>
-  </div>
-  <div class="mt-4">
-    <%= link_to "退会しない", customer_path(@user), class: "btn btn-primary me-2" %>
-    <%= link_to "退会する", withdraw_customer_path, method: :patch, class: "btn btn-danger" %>
+<div class="container" style="height: 80vh; position: relative;">
+  <div class="row text-center" style="position: absolute; top: 50%; transform: translateY(-50%); width: 100%;">
+    <div class="col-12">
+      <h1>本当に退会しますか？</h1>
+    </div>
+    <div class="col-12 mt-3">
+      <p>
+        退会すると、会員登録情報や<br>
+        これまでの購入履歴が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+    </div>
+    <div class="col-12 mt-4">
+      <div class="d-inline-block mr-3">
+        <%= link_to "退会しない", customer_path(@user), class: "btn btn-primary w-100" %>
+      </div>
+      <div class="d-inline-block">
+        <%= link_to "退会する", withdraw_customer_path, method: :patch, class: "btn btn-danger w-100" %>
+      </div>
+    </div>
   </div>
 </div>
+
