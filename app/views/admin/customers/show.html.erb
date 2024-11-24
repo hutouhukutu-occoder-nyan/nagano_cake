@@ -1,53 +1,34 @@
 <div class='container'>
-  <div class='row'>
+  <div class='row my-3'>
     <div class='col'>
       <h2><%= full_name(@user) %>さんの会員詳細</h2>
     </div>
   </div>
   <div class='row'>
     <div class='col-8'>
-      <div class="table-responsive mx-auto w-50">
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <th scope="row" class="text-nowrap">会員ID</th>
-              <td><%= @user.id %></td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-nowrap">氏名</th>
-              <td><%= @user.last_name %> <%= @user.first_name %></td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-nowrap">カナ</th>
-              <td><%= @user.last_name_kana %> <%= @user.first_name_kana %></td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-nowrap">郵便番号</th>
-              <td><%= @user.postal_code %></td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-nowrap">住所</th>
-              <td><%= @user.address %></td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-nowrap">電話番号</th>
-              <td><%= @user.telephone_number %></td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-nowrap">メールアドレス</th>
-              <td><%= @user.email %></td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-nowrap">会員ステータス</th>
-              <td><%= customer_status(@user) %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="mt-4">
-        <%= link_to "編集する", edit_admin_customer_path(@user), class: "btn btn-success me-2" %>
-        <%= link_to "注文履歴一覧を見る", "/admin", class: "btn btn-primary" %>
-     </div>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th scope="row" class="text-nowrap w-25">会員ID</th>
+            <td><%= @user.id %></td>
+          </tr>
+          <%= render 'layouts/customer_show', user: @user %>
+          <tr>
+            <th scope="row" class="text-nowrap w-25">会員ステータス</th>
+            <td class="<%= @user.is_active ? 'text-success' : 'text-muted' %>">
+              <%= customer_status(@user) %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-2 offset-2">
+      <%= link_to "編集する", edit_admin_customer_path(@user), class: "btn btn-success mr-2" %>
+    </div>
+    <div>
+      <%= link_to "注文履歴一覧を見る", "/admin", class: "btn btn-primary" %>
     </div>
   </div>
 </div>
