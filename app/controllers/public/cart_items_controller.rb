@@ -24,8 +24,11 @@ class Public::CartItemsController < ApplicationController
 
   def update
     cart_item = CartItem.find(params[:id])
-    cart_item.update(cart_item_params)
-    redirect_to request.referer
+    if cart_item.update(cart_item_params)
+      redirect_to request.referer,notice:'数量を変更しました'
+    else
+      redirect_to request.referer,alart:'数量の変更に失敗しました'
+    end
   end
 
   def all_destroy
@@ -36,14 +39,20 @@ class Public::CartItemsController < ApplicationController
   
   def destroy
     cart_item = CartItem.find(params[:id])
-    cart_item.destroy
-    redirect_to request.referer
+    if cart_item.destroy
+      redirect_to request.referer,notice:'商品を削除しました'
+    else
+      redirect_to request.referer,alart:'商品の削除に失敗しました'
+    end
   end
 
   def destroy_all
     cart_items = current_customer.cart_items
-    cart_items.destroy_all
-    redirect_to request.referer
+    if cart_items.destroy_all
+      redirect_to request.referer,notice:'商品を全て削除しました'
+    else
+      redirect_to request.referer,alart:'商品の全削除に失敗しました'
+    end
   end
 
   private
