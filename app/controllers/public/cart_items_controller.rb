@@ -24,8 +24,11 @@ class Public::CartItemsController < ApplicationController
 
   def update
     cart_item = CartItem.find(params[:id])
-    cart_item.update(cart_item_params)
-    redirect_to request.referer
+    if cart_item.update(cart_item_params)
+      redirect_to request.referer,notice:'数量を変更しました'
+    else
+      redirect_to request.referer,alart:'数量の変更に失敗しました'
+    end
   end
 
   def all_destroy
