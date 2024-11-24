@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row">
+  <div class="row m-4">
     <div class="col">
       <h2>会員情報編集</h2>
     </div>
   </div>
 
   <%= form_with model:@user, url: update_customer_path, local: true do |f| %>
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :名前 %>
     </div>
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :フリガナ %>
     </div>
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :郵便番号 %>
     </div>
@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :住所 %>
     </div>
@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :電話番号 %>
     </div>
@@ -57,7 +57,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-3">
       <%= f.label :メールアドレス %>
     </div>
@@ -66,12 +66,11 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-3 offset-3">
-      <%= f.submit :編集内容を保存, class: 'btn btn-success' %>
+  <div class="row mt-4">
+    <div class="col-4 offset-3">
+      <%= f.submit :編集内容を保存, class: 'btn btn-success w-100' %>
     </div>
     <div class="col-2 offset-1">
-    <%# 退会確認画面への遷移 %>
       <%= link_to "退会する", unsubscribe_customer_path, class: 'btn btn-danger' %>
     </div>
   </div>
