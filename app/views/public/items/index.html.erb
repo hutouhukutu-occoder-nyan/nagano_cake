@@ -1,17 +1,35 @@
-<h1>商品一覧</h1>
-<p>(全<%= Item.where(is_active: true).count %>件)</p>
-<p>
-  ※ジャンル検索の場合、「商品一覧」の部分は「(ジャンル名)一覧に変更する<br>
-  <例>「ケーキ一覧」
-</p>
+<div class="container">
+  <div class="row my-3">
+    <div class="col-3">
+      <%= render 'public/items/search_genre', genres: @genres %>
+    </div>
 
-<% @items.each do |item| %>
-  <%= link_to item_path(item) do %>
-    <%= image_tag item.get_item_image, size: '200x200' %><br>
-    <%= item.name %><br>
-  <% end %>
-  ￥<%= item.price %><br>
-  --------------------------------------------<br>
-<% end %>
+    <div class="col-8 offset-1">
+      <div class="row">
+        <p>商品一覧</p>
+        <p>(全<%= Item.where(is_active: true).count %>件)</p>
+      </div>
+      
+      <div class="row">
+        <% @items.each do |item| %>
+          <div class="col-3 text-center">
+            <%= link_to item_path(item), class: "text-decoration-none" do %>
+              <%= image_tag item.get_item_image, class: "img-fluid" %>
+              <p class="text-dark"><%= item.name %></p>
+            <% end %>
+            <p>￥<%= item.with_tax_price %></p>
+          </div>
+        <% end %>
+      </div>
 
-<%= paginate @items %>
+    </div>
+    
+
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <%= paginate @items, theme: 'twitter-bootstrap-4' %>
+  </div>
+
+</div>
