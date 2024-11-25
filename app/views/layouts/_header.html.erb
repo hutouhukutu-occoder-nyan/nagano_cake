@@ -2,7 +2,9 @@
   <div class="container-fluid bg-info">
     <div class="row">
       <div class="col-3 d-flex justify-content-center align-items-center">
-        <%= image_tag 'ECサイト.png', alt: '長野Cake', class: 'img-fluid' %>
+        <%= link_to root_path do %>
+          <%= image_tag 'ECサイト.png', alt: '長野Cake', class: 'img-fluid' %>
+        <% end %>
       </div>
 
       <div class="col-9">
