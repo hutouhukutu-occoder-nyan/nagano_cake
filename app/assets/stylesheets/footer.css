@@ -1,0 +1,27 @@
+
+.footer {
+  background-color: #D8B6B6;
+  padding: 100px 0; /* 上下の余白 */
+  position: relative;
+  text-align: center;
+}
+
+/* フッターの上端の波線 */
+.footer-top {
+  height: 20px; /* 波線の高さ */
+  color: #FFF8F0;
+  background: url('https://www.transparenttextures.com/patterns/wave-pattern.png') repeat-x center;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+
+/* フッターの中身のスタイル */
+.footer-content {
+  z-index: 1; /* 波線の上に表示されるように */
+  padding-top: 30px; /* 上部の余白 */
+  font-size: 14px;
+}
