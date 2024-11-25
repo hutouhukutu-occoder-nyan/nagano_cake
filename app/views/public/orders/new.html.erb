@@ -1,6 +1,6 @@
 <div class="container p-3">
+<%= form_with model: Order.new, url: check_orders_path, method: :post do |f| %>
   <div class="row">
-  <%= form_with model: Order.new, url: check_orders_path, method: :post do |f| %>
     <div class="col-md-12 offset-3 my-3">
       <h3>注文情報入力</h3>
     </div>
@@ -72,7 +72,7 @@
   <div class="col-md-12 my-2">
     <div class="d-flex justify-content-center">
       <%= f.submit "確認画面へ進む", class: "btn btn-info my-2" %>
-      <% end %>
     </div>
   </div>
+<% end %>
 </div>
