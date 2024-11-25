@@ -4,7 +4,7 @@
 <div class="bg-cream">
   <% genres.each do |genre| %>
     <p class="mb-3 py-2 text-center border-bottom border-dark">
-      <%= genre.name %>
+      <%= link_to genre.name, genre_path(genre) %>
     </p>
   <% end %>
 </div>

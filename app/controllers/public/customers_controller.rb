@@ -3,6 +3,7 @@ class Public::CustomersController < ApplicationController
   
   def show
     @user = current_customer
+    @genres = Genre.all
   end
 
   def edit

@@ -1,0 +1,7 @@
+<h1><%= @genre.name %>の商品一覧</h1>
+<ul>
+  <% @items.each do |item| %>
+    <li><%= item.name %></li>
+  <% end %>
+</ul>
+<%= link_to '戻る', items_path %>
