@@ -33,9 +33,9 @@ class Admin::OrdersController < ApplicationController
 
     if params[:order][:status] == "発送済み"
       if @order.order_details.all? { |order_detail| order_detail.making_status == "製作完了" }
-        order_detail.making_status == "製作完了"
         @order.update(order_params)
         redirect_to admin_order_path(@order) ,notice: '注文ステータスが更新されました。発送済みになりました。'
+        return
       else
         redirect_to admin_order_path(@order) ,alert: '製作ステータスが全て製作完了になるまでお待ちください。'
         return
