@@ -2,9 +2,9 @@
   <div class ="row">
     <h2 class ="ml-5" >注文履歴詳細</h2>
     <div class ="col-md-12">
-      <table class ="table table-bordered mt-3">
+      <table class ="table table-borderless mt-3">
         <tr>
-          <th class="active bg-light">購入者</th>
+          <th class="w-25" scope="col">購入者</th>
           <td>
             <%= link_to admin_customer_path(@order.customer), class:"text-dark", style: "text-decoration: underline;" do %>
               <%= full_name(@order.customer) %>
@@ -12,21 +12,21 @@
           </td>
         </tr>
         <tr>
-          <th class="active bg-light">注文日</th>
+          <th class="w-25">注文日</th>
           <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          <th class="active bg-light">配送先</th>
+          <th class="w-25">配送先</th>
           <td>〒<%= @order.postal_code %> <%= @order.address %>
               <br><%= @order.name %>
           </td>
         </tr>
         <tr>
-          <th class="active bg-light">支払方法</th>
+          <th class="w-25">支払方法</th>
           <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
         </tr>
         <tr>
-          <th class="active bg-light">注文ステータス</th>
+          <th class="w-25">注文ステータス</th>
           <td>
             <%= form_with model:@order, url: admin_order_path(@order), method: :patch, class: "d-flex align-items-center" do |f| %>
               <%= f.select :status,  Order.statuses.keys.map { |key| [key, key] }, { selected: @order.status }, class: "form-control form-control-sm me-2 w-auto" %>
@@ -58,7 +58,7 @@
             <td><%= number_with_delimiter(order_detail.amount * order_detail.price) %></td>
             <td>
               <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, class: "d-flex align-items-center" do |f| %>
-                <%= f.select :making_status,  OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: order_detail.making_status }, class: "form-control form-control-sm me-2 w-auto"%>
+                <%= f.select :making_status,  OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: order_detail.making_status }, class: "form-control form-control-sm mr-2 w-75 text-center"%>
               <%= f.submit '更新' ,class:"ml-3 btn btn-success" %>
             <% end %>
             </td>
