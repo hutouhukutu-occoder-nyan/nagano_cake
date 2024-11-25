@@ -19,7 +19,7 @@
           <tr>
             <td><%= user.id %></td> 
             <td>
-              <%= link_to full_name(user), admin_customer_path(user) %>
+              <%= link_to full_name(user), admin_customer_path(user), class: "text-dark" %>
             </td>
             <td><%= user.email %></td>
             <td class="<%= user.is_active ? 'text-success' : 'text-muted' %>">
