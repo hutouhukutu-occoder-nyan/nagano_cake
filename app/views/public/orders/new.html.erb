@@ -1,12 +1,12 @@
 <div class="container p-3">
-  <div class="row">
+  <div class="row col-md-12">
   <%= form_with model: Order.new, url: check_orders_path, method: :post do |f| %>
     <div class="col-md-12 offset-3 my-3">
       <h3>注文情報入力</h3>
     </div>
     <div class="col-md-12">
       <h4 class ="my-2">支払方法</h4>
-      <div class="offset-1">
+      <div class="offset-md-1">
         <%= f.radio_button :payment_method, :credit_card, checked: true %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
         <br>
@@ -17,7 +17,7 @@
 
     <div class="col-md-12">
       <h4 class ="my-2">お届け先</h4>
-      <div  class="offset-1 my-2">
+      <div  class="offset-md-1 my-2">
         <%= f.radio_button :address, "customer_address", checked: true %>
         <%= f.label :address, "ご自身の住所" %>
         <p class="text-break offset-1">
@@ -37,12 +37,12 @@
     </div>
 
 
-    <div class="col-md-12  offset-1 my-2">
+    <div class="col-md-12  offset-md-1 my-2">
       <%= f.radio_button :address, "new_address" %>
       <%= f.label :address, "新しいお届け先" %>
       <table class="offset-1">
         <tr class>
-          <td>郵便番号(ハイフンなし)</td>
+          <td style="white-space: nowrap;">郵便番号(ハイフンなし)</td>
           <td><%= f.text_field :new_postal_code,class: "ml-2 form-control narrow-input" %></td>
         </tr>
         <tr>
