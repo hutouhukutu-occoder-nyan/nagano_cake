@@ -1,0 +1,40 @@
+<div class="container">
+
+  <div class="row my-3">
+    <%= render 'layouts/errors', obj: @address %>
+  </div>
+
+  <div class="row my-3">
+    <h1>配送先登録/一覧</h1>
+  </div>
+
+  <div class="row my-3">
+    <%= render 'form', address: @address, submit_text: "新規投稿" %>
+  </div>
+
+  <div class="row my-5">
+    <table class="table table-bordered">
+      <thead class="bg-light">
+        <tr class="text-center">
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>氏名</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @addresses.each do |registered_address| %>
+          <tr class="text-center">
+            <td><%= registered_address.postal_code %></td>
+            <td><%= registered_address.address %></td>
+            <td><%= registered_address.name %></td>
+            <td>
+              <%= link_to "編集する", edit_address_path(registered_address), class: "btn btn-success mx-2" %>
+              <%= link_to "削除する", address_path(registered_address), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger mx-2" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

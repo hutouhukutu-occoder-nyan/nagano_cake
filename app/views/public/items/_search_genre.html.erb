@@ -1,0 +1,10 @@
+<div class="mt-5 bg-cream">
+  <p class="py-2 text-center">ジャンルで選ぶ</p>
+</div>
+<div class="bg-cream">
+  <% genres.each do |genre| %>
+    <p class="mb-3 py-2 text-center border-bottom border-dark">
+      <%= link_to genre.name, genre_path(genre), class: "text-dark" %>
+    </p>
+  <% end %>
+</div>

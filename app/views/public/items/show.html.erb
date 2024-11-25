@@ -1,8 +1,32 @@
-show
+<div class="container">
+  <div class="row my-3">
+    <div class="col-3">
+      <%= render 'search_genre', genres: @genres %>
+    </div>
 
+    <div class="col-4  offset-1">
+      <%= image_tag @item.get_item_image, class: "img-fluid" %>
+    </div>
 
-<%= form_with model: @cart_item_new,url: cart_items_path, method: :post, local:true do |f| %>
-  <%= f.hidden_field :item_id, value: @item.id %>
-  <%= f.select :amount, *[1..10] %>
-  <%= f.submit "カートに入れる",class: "btn btn-success" %>
-<% end %>
+    <div class="col-4">
+      <p class="h2 font-weight-bold my-3"><%= @item.name %></p>
+      <p class=" my-3"><%= @item.introduction %></p>
+      <p class="h5 my-3">￥<%= @item.with_tax_price %>(税込)</p>
+      
+      <% if customer_signed_in? %>
+        <%= form_with model: @cart_item_new, url: cart_items_path, method: :post, local:true do |f| %>
+        <div class="row my-3">
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <div class="col-auto my-2">
+            <%= f.number_field :amount, min: 1, required: true,placeholder: '個数選択',class: "form-control form-control-sm" %>
+          </div>
+          <div class="col-auto my-2">
+            <%= f.submit "カートに入れる", class: "btn btn-success btn-sm" %>
+          </div>
+        </div>
+        <% end %>
+      <% else %>
+      <% end %>
+    </div>
+  </div>
+</div>

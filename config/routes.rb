@@ -8,17 +8,23 @@ Rails.application.routes.draw do
 
   #orders,cart_items,items,adressees
   scope module: :public do
-    resources :orders, only: [:new, :create, :index, :show]
+    resources :orders, only: [:new, :create, :index, :show]do
+      collection do
+        post 'check', to: 'orders#check'
+        get 'complete', to: 'orders#complete', as: 'complete'
+      end
+    end
     resources :cart_items, only: [:index, :update, :destroy, :create]do
       collection do
         delete 'destroy_all', to: 'cart_items#destroy_all', as: 'all_delete'
       end
     end
     resources :items, only: [:index, :show]
-    resources :adresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :genres, only: [:show]
   end
-  post '/orders/check', to: 'public/orders#check', as: 'public_orders_check'
-  get '/orders/complete', to: 'public/orders#complete', as: 'public_orders_complete'
+
+  #get '/orders/check',to: 'public/orders#check', as: 'check'
 
   #customer
   get '/customers/my_page', to: 'public/customers#show', as: 'customer'
@@ -36,7 +42,15 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
+    resources :searches, only: [:index]
   end
+
+  get '/admin', to: 'admin/homes#index'
+
+
+  get 'searches/index', to: 'public/searches#index', as: 'public_search'
+  
+
 
 
 #device

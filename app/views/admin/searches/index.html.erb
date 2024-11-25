@@ -1,0 +1,12 @@
+<div class="search-results mt-3">
+  <h2>検索結果</h2>
+  <% if @items.any? %>
+    <ul>
+      <% @items.each do |item| %>
+        <li><%= link_to item.name, admin_item_path(item) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>検索結果がありません。</p>
+  <% end %>
+</div>
