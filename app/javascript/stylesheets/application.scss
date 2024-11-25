@@ -1,1 +1,16 @@
 @use '~bootstrap/scss/bootstrap';
+
+@font-face {
+  font-family: 'Shippori Mincho';
+  src: url('/assets/shippori-mincho-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Shippori Mincho', serif;
+}
+
+.bg-cream {
+  background-color: #fffbe6;
+}
