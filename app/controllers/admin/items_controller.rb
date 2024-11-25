@@ -9,6 +9,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      flash[:notice] = "商品を新規登録しました。"
       redirect_to admin_item_path(@item)
     else
       @genres = Genre.all
