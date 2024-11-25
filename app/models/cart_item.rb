@@ -9,3 +9,5 @@ class CartItem < ApplicationRecord
     item.with_tax_price * amount
   end
 end
+
+# subtotalをinteger型に変換する必要があるので、(item.with_tax_price * amount).to_iへ修正する必要がある
