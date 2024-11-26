@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :genres, only: [:show]
+    resources :staff, only:[:show]
   end
 
   #get '/orders/check',to: 'public/orders#check', as: 'check'
