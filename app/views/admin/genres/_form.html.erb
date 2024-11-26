@@ -1,0 +1,6 @@
+<%= form_with model: genre, url: path do |f| %>
+  <%= f.label :ジャンル名 %>
+  <%= f.text_field :name %>
+
+  <%= f.submit submit_text, class: "btn btn-success" %>
+<% end %>
