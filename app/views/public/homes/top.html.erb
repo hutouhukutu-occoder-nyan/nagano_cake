@@ -30,10 +30,12 @@
         <% @item_latest4.each do |item| %>
           <div class="col-3 text-center">
             <%= link_to item_path(item), class: "text-decoration-none" do %>
-              <%= image_tag item.get_item_image, class: "img-fluid" %>
-              <p class="text-dark"><%= item.name %></p>
+              <div class="embed-responsive embed-responsive-1by1">
+                <%= image_tag item.get_item_image, class: "img-fluid embed-responsive-item" %>
+              </div>
+              <p class="text-dark mb-0 text-truncate"><%= item.name %></p>
             <% end %>
-            <p>￥<%= item.with_tax_price %></p>
+            <p class="text-truncate">￥<%= number_with_delimiter(item.with_tax_price) %></p>
           </div>
         <% end %>
       </div>
