@@ -14,3 +14,11 @@ body {
 .bg-cream {
   background-color: #fffbe6;
 }
+
+header {
+  background-image: url('/assets/ECheader.png');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  min-height: 190px;
+}
