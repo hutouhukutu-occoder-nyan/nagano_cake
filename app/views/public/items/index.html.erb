@@ -14,12 +14,12 @@
         <% @items.each do |item| %>
           <div class="col-3 text-center">
             <%= link_to item_path(item), class: "text-decoration-none" do %>
-              <div class="embed-responsive embed-responsive-1by1">
-                <%= image_tag item.item_image, class: "img-fluid embed-responsive-item" %>
+              <div class="square">
+                <%= image_tag item.item_image, class: "img-fluid" %>
               </div>
               <p class="text-dark text-truncate"><%= item.name %></p>
             <% end %>
-            <p class="text-truncate">￥<%= item.with_tax_price %></p>
+            <p class="text-truncate">￥<%= number_with_delimiter(item.with_tax_price) %></p>
           </div>
         <% end %>
       </div>
