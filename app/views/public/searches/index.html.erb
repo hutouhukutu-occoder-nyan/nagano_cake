@@ -2,7 +2,7 @@
   <h2>検索結果</h2>
   <% if @items.any? %>
     <ul>
-      <% @items.each do |item| %>
+      <% @items.where(is_active: true).each do |item| %>
         <li><%= link_to item.name, item_path(item) %></li>
       <% end %>
     </ul>
