@@ -16,8 +16,4 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 
-  def get_item_image
-    (item_image.attached?) ? item_image : 'no_image.jpg'
-  end
-
 end

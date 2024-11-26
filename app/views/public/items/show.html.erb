@@ -4,14 +4,16 @@
       <%= render 'search_genre', genres: @genres %>
     </div>
 
-    <div class="col-4  offset-1">
-      <%= image_tag @item.get_item_image, class: "img-fluid" %>
+    <div class="col-4 offset-1">
+      <div class="embed-responsive embed-responsive-1by1">
+        <%= image_tag @item.item_image, class: "img-fluid embed-responsive-item" %>
+      </div>
     </div>
 
     <div class="col-4">
       <p class="h2 font-weight-bold my-3"><%= @item.name %></p>
       <p class=" my-3"><%= @item.introduction %></p>
-      <p class="h5 my-3">￥<%= @item.with_tax_price %>(税込)</p>
+      <p class="h5 my-3">￥<%= number_with_delimiter(@item.with_tax_price) %>(税込)</p>
       
       <% if customer_signed_in? %>
         <%= form_with model: @cart_item_new, url: cart_items_path, method: :post, local:true do |f| %>
