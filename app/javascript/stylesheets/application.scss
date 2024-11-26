@@ -14,3 +14,11 @@ body {
 .bg-cream {
   background-color: #fffbe6;
 }
+
+header {
+  background-image: url('assets/images/ECサイトヘッダー.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 200px;
+}
