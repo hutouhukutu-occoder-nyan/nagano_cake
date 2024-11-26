@@ -57,9 +57,17 @@
             <td><%= number_with_delimiter(order_detail.amount) %></td>
             <td><%= number_with_delimiter(order_detail.amount * order_detail.price) %></td>
             <td>
-              <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, class: "d-flex align-items-center" do |f| %>
-                <%= f.select :making_status,  OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: order_detail.making_status }, class: "form-control form-control-sm mr-2 w-75 text-center"%>
-              <%= f.submit '更新' ,class:"ml-3 btn btn-success" %>
+            <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, class: "d-flex align-items-center" do |f| %>
+              <% if order_detail.order.status == 0 %>
+                <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: "着手不可", disabled: true }, class: "form-control form-control-sm mr-2 w-75 text-center" %>
+              <% else %>
+                <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: order_detail.making_status }, class: "form-control form-control-sm mr-2 w-75 text-center" %>
+              <% end %>
+
+              <%#= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, class: "d-flex align-items-center" do |f| %>
+                <%#= f.select :making_status,  OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: order_detail.making_status }, class: "form-control form-control-sm mr-2 w-75 text-center"%>
+              <%#= f.submit '更新' ,class:"ml-3 btn btn-success" %>
+              <%= f.submit '更新', class: "ml-3 btn btn-success" %>
             <% end %>
             </td>
           </tr>

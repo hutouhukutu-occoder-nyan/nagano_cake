@@ -68,7 +68,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.order(id: :desc)
   end
 
   def show
