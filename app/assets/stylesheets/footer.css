@@ -1,12 +1,8 @@
-* {
-  padding:0;
-  margin:0;
-}
 
 .footer2 {
   padding:0;
   margin:0;
-  background-image: url("assets/ECサイトヘッダー.png");
+  background-image: url("assets/ECサイトフッター.png");
   background-size: cover;
-  height:300px;
+  height:200px;
 }
