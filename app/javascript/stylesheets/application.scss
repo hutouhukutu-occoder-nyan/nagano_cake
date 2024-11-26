@@ -38,10 +38,10 @@ header {
   object-fit: cover;
 }
 
-.rainbow {
+.wave {
   background: linear-gradient(to right, Magenta, yellow, Cyan, Magenta) 0% center/200%;
-  animation: rainbow 2s linear infinite;
+  animation: wave 2s linear infinite;
 }
-@keyframes rainbow {
+@keyframes wave {
   100% { background-position-x: 200%; }
 }
