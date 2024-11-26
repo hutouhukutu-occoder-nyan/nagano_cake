@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row my-4">
     <h2>商品一覧</h2>
-    <%= link_to "+", new_admin_item_path %>
+    <%= link_to new_admin_item_path, class: "ml-auto" do %>
+      <i class="bi bi-plus-circle h1 text-dark"></i>
+    <% end %>
   </div>
   
   <div class="row">
@@ -21,9 +23,9 @@
             <tr class="text-center">
               <td><%= item.id %></td>
               <td><%= link_to item.name, admin_item_path(item), class: "text-dark" %></td>
-              <td><%= item.price %></td>
+              <td><%= number_with_delimiter(item.price) %></td>
               <td><%= item.genre.name %></td>
-              <td><%= item.is_active ? '販売中' : '販売停止中' %></th>
+              <td><%= content_tag(:strong, item.is_active ? '販売中' : '販売停止中', class: item_status(item)) %></th>
             </tr>
           <% end %>
         </tbody>
