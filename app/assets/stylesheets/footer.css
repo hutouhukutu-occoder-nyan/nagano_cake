@@ -1,39 +1,12 @@
-/* フッターのスタイル */
-.footer {
-  background-color: #D8B6B6;
-  padding: 100px 0; /* 上下の余白 */
-  position: relative;
-  text-align: center;
+* {
+  padding:0;
+  margin:0;
 }
 
-/* フッターの上端の波線 */
-.footer-top {
-  height: 20px; /* 波線の高さ */
-  color: #FFF8F0;
-  background: url('https://www.transparenttextures.com/patterns/wave-pattern.png') repeat-x center;
-  background-size: contain;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-/* フッターの下端の波線 */
-.footer-bottom {
-  height: 20px; /* 波線の高さ */
-  color: #FFF8F0;
-  background: url('https://www.transparenttextures.com/patterns/wave-pattern.png') repeat-x center;
-  background-size: contain;
-  position: absolute;
-  bottom: 0; /* フッターの下に固定 */
-  left: 0;
-  right: 0;
-  z-index: 1; /* 上に重ならないように */
-}
-
-/* フッターの中身のスタイル */
-.footer-content {
-  z-index: 2; /* 波線の上に表示されるように */
-  padding-top: 30px; /* 上部の余白 */
-  font-size: 14px;
+.footer2 {
+  padding:0;
+  margin:0;
+  background-image: url("assets/ECサイトヘッダー.png");
+  background-size: cover;
+  height:300px;
 }
