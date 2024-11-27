@@ -24,17 +24,17 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 <br>
 
 ## 作者
-*永田佳樹(かじゅちゃん)(https://github.com/cake0118 "個人GitHub")
-*松田彩花(あやちゃん)(https://github.com/NT-lang-png "個人GitHub")
-*大貫新太桜(しんちゃん)(https://github.com/aroraratta "個人GitHub")
+* 永田佳樹(かじゅちゃん)(https://github.com/cake0118 "個人GitHub")
+* 松田彩花(あやちゃん)(https://github.com/NT-lang-png "個人GitHub")
+* 大貫新太桜(しんちゃん)(https://github.com/aroraratta "個人GitHub")
 <br>
 
 ----
 <br>
 
 ## 設計書
-*("テーブル定義所" https://docs.google.com/spreadsheets/d/1SmatRN7M-jB6chOB3seCm8JIt-vmaIIJ/edit?rtpof=true)
-*("アプリケーション詳細設計書" https://docs.google.com/spreadsheets/d/1BhYcnTOA2TUaKk4SuEJPK56V7djKrrGuGkViyfWNO68/edit?gid=549108681#gid=549108681)
+* ("テーブル定義所" https://docs.google.com/spreadsheets/d/1SmatRN7M-jB6chOB3seCm8JIt-vmaIIJ/edit?rtpof=true)
+* ("アプリケーション詳細設計書" https://docs.google.com/spreadsheets/d/1BhYcnTOA2TUaKk4SuEJPK56V7djKrrGuGkViyfWNO68/edit?gid=549108681#gid=549108681)
 <br>
 
 ----
