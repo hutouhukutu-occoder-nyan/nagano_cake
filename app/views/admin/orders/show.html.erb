@@ -1,0 +1,92 @@
+<div class ="container mt-4">
+  <div class ="row">
+    <h2 class ="ml-5" >注文履歴詳細</h2>
+    <div class ="col-md-12">
+      <table class ="table table-borderless mt-3">
+        <tr>
+          <th class="w-25" scope="col">購入者</th>
+          <td>
+            <%= link_to admin_customer_path(@order.customer), class:"text-dark", style: "text-decoration: underline;" do %>
+              <%= full_name(@order.customer) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th class="w-25">注文日</th>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th class="w-25">配送先</th>
+          <td>〒<%= @order.postal_code %> <%= @order.address %>
+              <br><%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th class="w-25">支払方法</th>
+          <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
+        </tr>
+        <tr>
+          <th class="w-25">注文ステータス</th>
+          <td>
+            <%= form_with model:@order, url: admin_order_path(@order), method: :patch, class: "d-flex align-items-center" do |f| %>
+              <%= f.select :status,  Order.statuses.keys.map { |key| [key, key] }, { selected: @order.status }, class: "form-control form-control-sm me-2 w-auto" %>
+              <%= f.submit '更新', class:"ml-3 btn btn-success" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class ="row">
+    <div class="col-md-9">
+      <table class="table table-bordered mt-3">
+        <thead class="active bg-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do|order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= number_with_delimiter(order_detail.price) %></td>
+            <td><%= number_with_delimiter(order_detail.amount) %></td>
+            <td><%= number_with_delimiter(order_detail.amount * order_detail.price) %></td>
+            <td>
+            <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, class: "d-flex align-items-center" do |f| %>
+              <% if order_detail.order.status == 0 %>
+                <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: "着手不可", disabled: true }, class: "form-control form-control-sm mr-2 w-75 text-center" %>
+              <% else %>
+                <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: order_detail.making_status }, class: "form-control form-control-sm mr-2 w-75 text-center" %>
+              <% end %>
+
+              <%#= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, class: "d-flex align-items-center" do |f| %>
+                <%#= f.select :making_status,  OrderDetail.making_statuses.keys.map { |key| [key, key] }, { selected: order_detail.making_status }, class: "form-control form-control-sm mr-2 w-75 text-center"%>
+              <%#= f.submit '更新' ,class:"ml-3 btn btn-success" %>
+              <%= f.submit '更新', class: "ml-3 btn btn-success" %>
+            <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+     </div>
+     <div class="col-md-3 d-flex flex-column justify-content-end">
+      <table class="table table-bordered mt-3">
+        <tr>
+          <th class="active bg-light">商品合計</th><td class="text-right"><%= number_with_delimiter(@order.total_payment - @order.shipping_cost) %>円</td>
+        </tr>
+        <tr>
+          <th class="active bg-light">送料</th><td class="text-right"><%= number_with_delimiter(@order.shipping_cost) %>円</td>
+        </tr>
+        <tr>
+          <th class="active bg-light">請求金額合計</th><td class="text-right"><%= number_with_delimiter(@order.total_payment) %>円</td>
+        </tr>
+      </table>
+     </div>
+  </div>
+</div>

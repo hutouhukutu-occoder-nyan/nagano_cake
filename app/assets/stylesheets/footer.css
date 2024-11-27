@@ -1,0 +1,8 @@
+
+.footer2 {
+  padding:0;
+  margin:0;
+  background-image: url("assets/ECサイトフッター.png");
+  background-size: cover;
+  height:200px;
+}

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row my-2">
+    <h2>ジャンル一覧・追加</h2>
+  </div>
+  
+  <div class="row my-3">
+    <%= render 'layouts/errors', obj: @genre %>
+  </div>
+
+  
+  <div class="row my-4">
+    <%= render 'form', genre: @genre, path: admin_genres_path , submit_text: "新規登録" %>
+  </div>
+  
+  <table class="table">
+    <thead class="bg-light">
+      <tr class="text-center">
+        <th>ジャンル</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @genres.each do |genre| %>
+        <tr class="text-center">
+          <td><%= genre.name %></td>
+          <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

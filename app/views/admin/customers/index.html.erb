@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row my-4">
+    <h2>会員一覧</h2>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1">
+      <table class="table ">
+        <thead class="bg-light">
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td> 
+            <td>
+              <%= link_to full_name(user), admin_customer_path(user), class: "text-dark" %>
+            </td>
+            <td><%= user.email %></td>
+            <td class="<%= user.is_active ? 'text-success' : 'text-muted' %>">
+              <%= customer_status(user) %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= paginate @users %>
+    </div>
+  </div>
+</div>

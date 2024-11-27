@@ -1,0 +1,14 @@
+<div class="container">
+
+  <div class="row my-3">
+    <%= render 'layouts/errors', obj: @item %>
+  </div>
+
+  <div class="row my-3">
+    <h2>新規商品登録</h2>
+  </div>
+    
+  <div class="row">
+    <%= render 'form', item: @item, genres: @genres, submit_text: "新規登録", path: admin_items_path %>
+  </div>
+</div>

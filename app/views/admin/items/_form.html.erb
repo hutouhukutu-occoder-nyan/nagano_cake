@@ -1,0 +1,58 @@
+<%= form_with model: item, url: path, class: "w-100 mx-auto" do |f| %>
+
+  <div class="form-group row my-3">
+    <%= f.label :商品画像, class: "col-3 control-label" %>
+    <div class="col-9">
+      <%= f.file_field :item_image, accept: "image/*" %>
+    </div>
+  </div>
+
+  <div class="form-group row my-3">
+    <%= f.label :商品名, class: "col-3 control-label" %>
+    <div class="col-9">
+      <%= f.text_field :name, class: "form-control", placeholder: "商品名" %>
+    </div>
+  </div>
+
+  <div class="form-group row my-3">
+    <%= f.label :商品説明, class: "col-3 control-label" %>
+    <div class="col-9">
+      <%= f.text_area :introduction, class: "form-control", placeholder: "ここに説明文を記述します" %>
+    </div>
+  </div>
+
+  <div class="form-group row my-3">
+    <%= f.label :ジャンル, class: "col-3 control-label" %>
+    <div class="col-9">
+      <%= f.collection_select :genre_id, genres, :id, :name, { include_blank: "選択して下さい" }, { class: "form-control" } %>
+    </div>
+  </div>
+
+  <div class="form-group row my-3">
+    <%= f.label :税抜価格, class: "col-3 control-label" %>
+    <div class="col-9">
+      <%= f.text_field :price, class: "form-control", placeholder: "1000" %>
+    </div>
+  </div>
+
+  <div class="form-group row my-3">
+    <%= f.label :is_active, "販売ステータス", class: "col-3 control-label" %>
+    <div class="col-4">
+      <div class="form-check">
+        <%= f.radio_button :is_active, true, class: "form-check-input" %>
+        <%= f.label :is_active, "販売中", value: true, class: "form-check-label" %>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-check">
+        <%= f.radio_button :is_active, false, class: "form-check-input" %>
+        <%= f.label :is_active, "販売停止中", value: false, class: "form-check-label" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <%= f.submit submit_text, class: "btn btn-primary" %>
+  </div>
+
+<% end %>

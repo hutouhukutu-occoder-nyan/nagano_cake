@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col-3">
+      <%= render 'public/items/search_genre', genres: @genres %>
+    </div>
+
+    <div class="col-8 offset-1">
+      <div class="row">
+        <p class="h2">商品一覧</p>
+        <p class="mt-auto">(全<%= @items_count.count %>件)</p>
+      </div>
+      
+      <div class="row">
+        <% @items.each do |item| %>
+          <div class="col-3 text-center">
+            <%= link_to item_path(item), class: "text-decoration-none" do %>
+              <div class="square">
+                <%= image_tag item.item_image, class: "img-fluid" %>
+              </div>
+              <p class="text-dark text-truncate"><%= item.name %></p>
+            <% end %>
+            <p class="text-truncate">￥<%= number_with_delimiter(item.with_tax_price) %></p>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="row justify-content-center">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>
