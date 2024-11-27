@@ -37,3 +37,11 @@ header {
   height: 100%;
   object-fit: cover;
 }
+
+.wave {
+  background: linear-gradient(to right, Magenta, yellow, Cyan, Magenta) 0% center/200%;
+  animation: wave 2s linear infinite;
+}
+@keyframes wave {
+  100% { background-position-x: 200%; }
+}
